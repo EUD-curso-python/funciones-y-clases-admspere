@@ -3,7 +3,7 @@ import random
 
 import pytest
 
-import funciones_y_clases_solved as md
+import funciones_y_clases as md
 
 def assert_attr(obj, attr):
     assert hasattr(obj, attr), 'Falta implementar "{}"'.format(attr)
@@ -24,8 +24,8 @@ def test_cambiar_global(var):
     assert md.global1 == var, '{}: No se cambió correctamente "global1"'.format(func_name)
 
 bisiesto_fn = lambda x: False if not x % 4 == 0 else (True if not x % 100 == 0 else (False if not x % 400 == 0 else True))
-anio_bisiesto = [
-    ('anio_bisiesto', True if bisiesto_fn(year) else False, [year], {})
+A_Bisiesto = [
+    ('A_Bisiesto', True if bisiesto_fn(year) else False, [year], {})
     for year in random.sample(range(1584, 2100), 70)
 ]
 
@@ -63,10 +63,9 @@ for i in range(20):
     pares_medias.append(('pares_medias', res, [ll], {}))
 
 @pytest.mark.parametrize(('func_name', 'output', 'args', 'kwargs'), 
-    anio_bisiesto + contar_valles + saltando_rocas + pares_medias)
+    A_Bisiesto + contar_valles + saltando_rocas + pares_medias)
 def test_eval(func_name, output, args, kwargs):
     assert_function(func_name, output, args, kwargs)
-
 
 @pytest.mark.parametrize(('lista'), [[random.randint(0,100) for i in range(20)] for i in range(4)]
 )

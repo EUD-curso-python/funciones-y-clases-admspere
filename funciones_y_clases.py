@@ -1,15 +1,19 @@
+
 global1 = 34
 
-def cambiar_global():
+def cambiar_global(g):
     '''Cambiar una variable global
 
     Esta función debe asignarle a la variable global `global1` el valor que se
     le pasa como único argumento posicional.
     '''
-    pass
+    global global1
+    global1=g
+    return g
+cambiar_global(99)
+print ("\t\nEl valor que se le pasa como único argumento posicional : ", global1)
 
-
-def anio_bisiesto():
+def anio_bisiesto(yy):
     '''Responder si el entero pasado como argumento es un año bisiesto
     
     Para determinar si un año es bisiesto, se deben tener en cuenta las 
@@ -21,7 +25,17 @@ def anio_bisiesto():
 
     Retorna True o False
     '''
-    pass
+        
+def A_Bisiesto(Year):
+  if Year%4==0 and (not(Year%100==0) or Year%400==0 ):
+    texto='Es Bisiesto.'
+  else:
+    texto='Es un año NO Bisiesto.'
+  return texto
+Year= A_Bisiesto(2000)
+#Year=int(input('Introduzca un año entre 2000 y 2021:'))
+print ("\t\nEl Año no es biciesto = ",Year)
+
 
 def contar_valles():
     r'''Contar el número de valles
@@ -41,9 +55,38 @@ def contar_valles():
     representados en la lista, que para el ejemplo que se acaba de mostrar es
     de 3 valles.
     '''
-    pass
 
-def saltando_rocas():
+listac=[1,-1,0,1,0,1,1,1]
+
+def contar_valles(listaR):
+   #print('lista dentro', listaR)
+   cuentaAbajo=0#-1s
+   cuentaAdelante=0 #0s
+   cuentaArriba=0 #1
+   for x in range(len(listaR)):
+        #print(listaR[x])
+        if listaR[x]==-1   :
+          cuentaAbajo=cuentaAbajo+1
+        #return cuentaLomas
+         #print(cuentaLomas)
+        elif listaR[x]==0:
+          cuentaAdelante=cuentaAdelante+1
+        #return cuentaA
+        # print(cuentaA)
+        elif listaR[x]==1:  
+          cuentaArriba=cuentaArriba+1 
+   return cuentaAdelante
+   #print('prueba cuenta valles', cuentaValles)
+
+    #pass
+cuentaV=contar_valles(listac)
+print('cantidad de valles:', cuentaV )
+
+
+listaRocas=[0,1,1,0,1,0,1,1,0,1,0,0]
+
+def saltando_rocas(listaRoca):
+
     '''Mínimo número de saltos en las rocas
 
     Esta función hace parte de un juego en el que el jugador debe cruzar un río
@@ -57,9 +100,31 @@ def saltando_rocas():
     El objetivo es devolver el número mínimo de saltos que debe realizar el 
     jugador para ganar la partida
     '''
-    pass
 
-def pares_medias():
+
+ #saltos=0
+ #   print('lista rocas', listaRoca)
+    for x in range(len(listaRoca)):
+        if listaRoca[x]==0:#seca
+           saltos =saltos+1
+           if listaRoca[x+1]==1:#humeda
+              saltos=saltos=saltos+2
+           #return saltos
+           print(saltos)
+        elif listaRoca[x]==1:#humeda
+            saltos=saltos=saltos+2
+          #  if listaRoca[x+2]==1
+            #return saltos
+           # print(saltos)
+    return saltos
+    print('prueba cuenta saltos:', saltos)
+
+#minSaltos=saltando_rocas(listaRocas)    
+#print('prueba cuenta saltos:', minSaltos)
+
+listaMedias=[3,1,1,9,1,4,8,1,8,88,10,10]
+
+def pares_medias(listaMedia):
     '''Contar pares de medias
 
     Esta función debe recibir como argumento una lista de enteros. Cada elemento
@@ -68,10 +133,41 @@ def pares_medias():
     El objetivo de esta función es devolver un diccionario cuyas keys son cada 
     uno de los colores que se encuentren en la lista, y los valores son la 
     cantidad de pares que se han encontrado para cada color.
-    
-    Las medias que no tengan pares no deberían ser incluídas en el diccionario.
     '''
-    pass
+    #dic={}
+    #pares=0
+    #i=1
+    #listaMedia=sorted(listaMedia)
+    #print (listaMedia)
+
+    #for x in range(len(listaMedia)):
+      #mediantes=listaMedia[x+1]
+     # if listaMedia[x]==dic[x]:
+    #    pares=pares+1
+   #   i=i+1
+  #    dic[x]=listaMedia[x]
+
+ #   return dic 
+
+#CantidadPares= pares_medias(listaMedias)
+#print('cantidad de pares:', CantidadPares)
+
+
+class Person:
+    name = ''
+    school = ''
+     
+    def print_name(self):
+        print (self.name)
+         
+    def print_school(self):
+        print (self.school)
+     
+jorge = Person()
+jorge.name = 'Jorge'
+jorge.school = 'Universidad de la vida'
+jorge.print_name()
+jorge.print_school()
 
 # Crear una clase llamada `ListaComa` que reciba en su constructor un iterable
 # con el valor inicial para una lista que se guardará en un atributo llamado 
@@ -79,8 +175,40 @@ def pares_medias():
 # los elementos del atributo `lista` unidos a través de comas. Ejemplo:
 # si `lista` es [1,2,3,4], __str__ debe devolver '1,2,3,4'
 
+listaData=[1,2,3,4,5]
+
+class ListaComa:
+  #lista=[]
+  
+    def __init__ (self, lista):
+          self.lista=lista
+          print ('la lista q le envie:',lista)
+      #for x in range(len(lista)):
+        #listaU = self.lista
+        #listaUnida=lista[x]+listaUnida[x]
+           #print(lista[x])
+      #return listaUnida
+    def __str__(self):
+        listaUnida = ''
+        for x in range(len(self.lista)):
+            print('haber que pasa', self.lista)
+            listaUnida=  listaUnida +str(self.lista[x])
+        listaUnida=','.join(listaUnida)
+        print(listaUnida)
+        return listaUnida
+
+lista1 = ListaComa(listaData)
+#lista1.lista=listaData
+#listaObjeto=lista1(listaData)
+print('esta es mi lista despues de pasar por la clase:', lista1)
 
 
+        #nombresCadena = self.nombres+self.apellidos
+        #nombresCadena=' '.join(nombresCadena)
+
+
+
+    
 
 # Crear una clase llamada `Persona` que reciba en su constructor como 1er 
 # argumento un iterable con el valor inicial para una lista que se guardará en
@@ -100,12 +228,102 @@ def pares_medias():
 
 
 
+ListaApellidos=['Perez', 'Morales']
+ListaNombres=['Sergio', 'Hernando']
+
+class Persona:
+    lista=[]
+  
+   # print(isinstance(self.apellidos,str))
+      #if self.nombres[x]=str
+    def __init__ (self, nombres, apellidos):
+        self.nombres=[]
+        for x in range(len(nombres)):
+                     if isinstance(nombres[x],str)==True :
+                        
+                         #self.nombres.capitalize()
+                        self.nombres.append(nombres[x].capitalize())
+                        #nombres=nombres[x].capitalize()+str(nombres)
+                        #print('nombre en el for',nombres)
+        #print('despues del for',nombres)
+        #print('apellidos antes del for',apellidos) 
+        
+        for x in range(len(apellidos)):
+                     if isinstance(apellidos[x],str)==True :
+                        self.apellidos=apellidos
+                        apellidos[x]=apellidos[x].capitalize()
+                        #apellidosS=apellidos[x].capitalize()+' , '+str(apellidosS)
+                        #print('apellido en el for',apellidos)
+
+    def nombre_completo (self):
+        nombresCadena=[]
+        nombresCadena = self.nombres+self.apellidos
+        nombresCadena=' '.join(nombresCadena)
+
+        print('\t\nNombres Completos', nombresCadena)
+        return str(nombresCadena)
+
+
+
+
+
+
+
+apellidosAntes = Persona(ListaNombres, ListaApellidos )
+print('prueba objeto metodo2', apellidosAntes.nombre_completo())
+
+
 
 
 # Crear una clase llamada `Persona1` que herede de la clase `Persona`, y que en su
 # constructor reciba además de los atributos del padre, una variable tipo 
 # `datetime` como 3er argumento para guardar en atributo `fecha_nacimiento`.
 #
+
+
+
+import datetime
+from datetime import date
+#from datetime import datetime
+
+mifecha=datetime.datetime(1979, 9, 1)
+class Persona1(Persona):
+    def __init__ (self, nombres, apellidos, fecha_nacimiento):
+        
+        
+        self.fecha_nacimiento = fecha_nacimiento
+        super().__init__(nombres, apellidos)
+
+        print('fecha nacimeinto antes de metodo edad', fecha_nacimiento)
+
+    def edad (self):
+        
+#Día actual
+        print('dentro de la clase', self.fecha_nacimiento)
+        yy=self.fecha_nacimiento
+        yearM=yy.year
+        print('yearMMMM', yearM)
+        #self.fecha_nacimiento=fecha_nacimiento
+        today = date.today()
+        print('hoy',today)
+        year = today.year
+        print('year', year)
+        print(self.fecha_nacimiento)
+        
+#Fecha actual
+        #now = datetime.now()
+        #print('now', now)
+        CalculoEdad = year-yearM
+        print('Clase Calculando Edad', CalculoEdad)
+        
+        return CalculoEdad
+
+print('mifecha antes de nada', mifecha)
+cumple=Persona1(ListaNombres, ListaApellidos, mifecha)
+#cumple=Persona1.__init__(ListaNombres, ListaApellidos, mifecha)
+print('mi cumple:', cumple.edad())
+
+
 # Implementar el método `edad` para que devuelva un `int` que represente la edad
 # de la persona y que se calcule restando los años entre la fecha actual y 
 # el atributo `fecha_nacimiento`.
@@ -113,3 +331,44 @@ def pares_medias():
 # si `fecha_nacimiento` es 1985-10-21 y la fecha actual es 2020-10-20, el método
 # `edad` debe devover 35.
 
+
+import datetime
+from datetime import date
+#from datetime import datetime
+
+fechaN=datetime.datetime(1979, 9, 1)
+MiEdad=0
+
+class edad():
+    def __init__(self, fecha_nacimiento):
+        self.fecha_nacimiento=fecha_nacimiento
+        print('fecha de nacimiento:', fecha_nacimiento)
+    def edad(fecha_nacimiento):
+        yy=fecha_nacimiento
+        yearM=yy.year
+        print('yearMMMM', yearM)
+        #self.fecha_nacimiento=fecha_nacimiento
+        today = date.today()
+        print('hoy',today)
+        year = today.year
+        print('year', year)
+        print(fecha_nacimiento)
+        
+#Fecha actual
+        #now = datetime.now()
+        #print('now', now)
+        CalculoEdad = year-yearM
+        print('Clase Calculando Edad', CalculoEdad)
+        
+        return int(CalculoEdad )
+
+MiEdad=edad.edad(fechaN)
+print ('Me Retorna La Clase: ', MiEdad)
+
+
+End = '100%'
+print("\n_____________________________________")
+print("Casi Que No ....!!!!: \"¿Acabo?\"")
+print('En Verdad Termine: \'¡ Por Fin !\'')
+print("\n\tTerminamos" ,End)
+print("\n_____________________________________")
